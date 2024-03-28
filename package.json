@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ebay/nice-modal-react": "^1.2.13",
     "@reduxjs/toolkit": "^2.2.2",
+    "axios": "^1.6.8",
     "classnames": "^2.5.1",
+    "flowbite-react": "^0.7.5",
     "framer-motion": "^11.0.22",
     "next": "14.1.4",
     "react": "^18",

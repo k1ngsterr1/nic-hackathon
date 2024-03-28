@@ -2,7 +2,7 @@ import { Navbar } from "@/entities/Navbar";
 
 const Header = () => {
   return (
-    <header>\
+    <header className="flex justify-between items-center">
       <Navbar />
     </header>
   )

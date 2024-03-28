@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Providers from "./provider/provider";
 import "./style/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "hackathon-nic",
