@@ -1,8 +1,5 @@
 import axios, {AxiosError} from "axios";
 
-
-
-
 const axiosInstance = axios.create({
     baseURL: "http://localhost:8080", // URL will be changed by backend url
     headers: {
@@ -21,7 +18,7 @@ axiosInstance.interceptors.response.use(
     async(error: AxiosError) => {
         if(error.response?.status === 401) {
             localStorage.removeItem("@access-token")
-            // window.location.href = '/'  Что будем делать если получили статус 401 Unauthorized
+            // window.location.href = '/'  Редирект
         }
         return Promise.reject(error)
     }
