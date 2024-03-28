@@ -1,5 +1,5 @@
-import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 interface ILayout {
   children: React.ReactNode;
@@ -7,11 +7,9 @@ interface ILayout {
 }
 
 export default function Layout({ children }: ILayout) {
-  return (
-    <article>
-      <Header />
-        {children}
-      <Footer />
-    </article>
-  )
+  return <>
+    <Header />
+      {children}
+    <Footer />
+  </>
 }

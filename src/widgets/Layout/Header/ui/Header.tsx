@@ -1,6 +1,10 @@
+import { Navbar } from "@/entities/Navbar";
+
 const Header = () => {
   return (
-    <header></header>
+    <header>\
+      <Navbar />
+    </header>
   )
 }
 
