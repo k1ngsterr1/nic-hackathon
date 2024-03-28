@@ -13,7 +13,11 @@ const Button = forwardRef((props: IButton, ref: Ref<HTMLButtonElement>) => {
   return (
     <button
       ref={ref}
-      className={cn(className, 'outline-none border-none')}
+      className={cn(
+        className,
+        'outline-none border-none'
+        )
+      }
       {...rest}
     >
       {label}
