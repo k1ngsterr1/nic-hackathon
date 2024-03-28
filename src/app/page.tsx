@@ -1,9 +1,12 @@
 import { MainPage } from "@/pages/Main";
+import Layout from "@/widgets/Layout/Layout";
 
 export default function Home() {
   return (
-    <main className="">   
-      <MainPage />
-    </main>
+    <Layout>
+      <main className="">   
+        <MainPage />
+      </main>
+    </Layout>
   );
 }
