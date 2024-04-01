@@ -1,21 +1,31 @@
-import React from "react";
-import cn from "classnames";
+import {ReactHTMLElement} from "react";
+import './index.scss'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  className?: string;
+
+interface IInput extends ReactHTMLElement<HTMLInputElement>{
+    placeholder: string,
+    autocomplete: boolean
+    bgColor: string
+
 }
 
-const Input: React.FC<InputProps> = ({ className, ...rest }) => {
-  return (
-    <input
-      className={cn(
-        className,
-        "outline-none border-none bg-transparent w-full"
-        )
-      }
-      {...rest}
-    />
-  );
+
+const Input = (
+    {
+        bgColor = 'black',
+        ...rest
+    }: IInput
+) => {
+
+    return (
+        <div className="field">
+            <input
+                className={`field__input--${bgColor}`} {...rest}
+                placeholder=""
+
+            />
+        </div>
+    );
 };
 
 export default Input;
