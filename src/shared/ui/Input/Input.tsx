@@ -17,7 +17,7 @@ const Input: React.FC<IInputProps> = ({
       <input
         className={cn(
           className,
-          `field__input--${bgColor} outline-0 border-0 bg-transparent`
+          `field__input--${bgColor} w-full outline-0 border-0 bg-transparent`
         )}
         {...rest}
       />

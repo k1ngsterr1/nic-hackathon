@@ -1,5 +1,7 @@
 import { Navbar } from "@/entities/Navbar";
 import Logo from "@/shared/ui/icons/Logo";
+import BasketIcon from "@/shared/ui/icons/main/basket";
+import ProfileIcon from "@/shared/ui/icons/main/profilte";
 
 const Header = () => {
   return (
@@ -10,7 +12,9 @@ const Header = () => {
           height={70} 
         />
         <Navbar />
-        <div></div>
+        <div className="flex gap-[30px]">
+          <ProfileIcon /> <BasketIcon />
+        </div>
       </div>
     </header>
   )

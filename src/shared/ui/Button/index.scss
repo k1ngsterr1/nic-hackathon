@@ -5,21 +5,19 @@
   border-radius: $border-radius;
 }
 
-
 .a-button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: fit-content;
   gap: 8px;
-  font-size: 14px !important;
+  font-size: 24px !important;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   outline: none;
   transition: all .25s ease;
   color: var(--first);
-
 
   &--md {
     @include button-size(0.5rem, 1rem, 0.875rem, 1.25rem, 2.5rem);
@@ -44,6 +42,11 @@
 
     &:hover {
 
+      svg {
+        path {
+          fill:#DE9406;
+        }
+      }
     }
   }
 
@@ -65,4 +68,9 @@
     border: 1px solid #282828;
   }
 
+  &--fifth {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+  }
 }
