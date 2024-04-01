@@ -1,37 +1,36 @@
-"use client"
-import React, { forwardRef, Ref } from 'react';
-import { motion } from 'framer-motion';
-import cn from 'classnames';
+import React from "react";
+import cn from "classnames";
+import './index.scss'
 
 interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  label: string;
+  variant?: string;
+  size?: string;
+  fullwidth?: boolean;
+  className?: string
+  children?: React.ReactNode;
 }
 
-const Button = forwardRef((props: IButton, ref: Ref<HTMLButtonElement>) => {
-  const { className, label, ...rest } = props;
+const Button: React.FC<IButton> = (
+  {
+    variant = 'primary',
+    size = 'sm',
+    fullwidth,
+    className,
+    children,
+    ...rest
+  }) => {
+  const buttonClasses = [
+    'a-button',
+    `a-button--${variant}`,
+    `a-button--${size}`,
+    fullwidth ? 'a-button--fullwidth' : null
+  ];
+
   return (
-    <button
-      ref={ref}
-      className={cn(
-        className,
-        'outline-none border-none'
-        )
-      }
-      {...rest}
-    >
-      <span>
-        {label}
-      </span>
-    </button>
+      <button className={cn(className, buttonClasses.join(' '))} {...rest}>
+        {children || 'Добавить'}
+      </button>
   );
-});
+};
 
-const MButton = motion(Button);
-
-if (process.env.NODE_ENV === 'development') {
-  const componentName = MButton.displayName || MButton.name || 'Component';
-  Button.displayName = `ForwardRef(${componentName})`;
-}
-
-export default MButton;
+export default Button;

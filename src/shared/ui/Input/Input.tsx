@@ -1,20 +1,27 @@
-import React from "react";
-import cn from "classnames";
+import { InputHTMLAttributes } from "react";
+import cn from 'classnames';
+import './index.scss';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  bgColor?: string;
   className?: string;
 }
 
-const Input: React.FC<InputProps> = ({ className, ...rest }) => {
+const Input: React.FC<IInputProps> = ({
+  bgColor = 'black',
+  className,
+  ...rest
+}) => {
   return (
-    <input
-      className={cn(
-        className,
-        "outline-none border-none bg-transparent w-full"
-        )
-      }
-      {...rest}
-    />
+    <div className="field">
+      <input
+        className={cn(
+          className,
+          `field__input--${bgColor} outline-0 border-0 bg-transparent`
+        )}
+        {...rest}
+      />
+    </div>
   );
 };
 

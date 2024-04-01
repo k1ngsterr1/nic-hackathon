@@ -1,4 +1,5 @@
-import { Input, MButton } from "@/shared/ui";
+import { Input } from "@/shared/ui";
+import Button from "@/shared/ui/Button/Button";
 import Logo from "@/shared/ui/icons/Logo";
 import Insta from "@/shared/ui/icons/footer/insta";
 import Mail from "@/shared/ui/icons/footer/mail";
@@ -30,10 +31,7 @@ const Footer = () => {
               />
               <Mail />
             </div>
-            <MButton 
-              className="bg-orange py-[13px] px-5 rounded-[10px] text-white hover:text-orange hover:bg-white transition-transform"
-              label="Send"
-            />
+            <Button className="bg-orange py-[13px] px-5 rounded-[10px] text-white hover:text-orange hover:bg-white transition-transform">Send</Button>
           </div>
         </div>
       </div>
