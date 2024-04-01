@@ -1,26 +1,55 @@
-import axios, {AxiosError} from "axios";
+import axios, { Axios, AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-const axiosInstance = axios.create({
-    baseURL: "http://localhost:8080", // URL will be changed by backend url
+const url = 'https://onepieceshop-production-f646.up.railway.app'
+
+const authRequest = axios.create({
+    baseURL: url,
     headers: {
-        "Content-Type": "application/json"
+        'Content-type':'application/json'
     }
 })
 
-axiosInstance.interceptors.request.use((config) => {
-    const token = localStorage.getItem("@access-token") || ""
-    if(config.headers && token) config.headers["Authorization"] = `Bearer ${token}`
-    return config
-})
+const onRequest = (config:AxiosRequestConfig):any => {
+    if (config?.headers) {
+        config.headers.Authorization = `Bearer ${localStorage.getItem('token')|| ""}`
+    }
+    return config;
+}
 
-axiosInstance.interceptors.response.use(
-    (response) => response,
-    async(error: AxiosError) => {
-        if(error.response?.status === 401) {
-            localStorage.removeItem("@access-token")
-            // window.location.href = '/'  Редирект
+const onRequestError = (error: AxiosError): Promise<AxiosError> => {
+    return Promise.reject(error);
+}
+
+const onResponse = (response: AxiosResponse): AxiosResponse => {
+    return response;
+}
+
+const onResponseError = async(error:any): Promise<AxiosError> => {
+    if(error.response && error.config){
+        if ((error.response.status === 401) || (error.response.status == 403) && !error.config?.isRetry) {
+            error.config.isRetry = true;
+            try {
+                const res = await axios.post(`${url}/api/v1/signin`, {
+                    refresh:localStorage.getItem('tokenRefresh')
+                })
+                const {access} = res.data;
+                localStorage.setItem('tokenAccess',access);
+                error.config!.headers = {...error.config!.headers}
+                return authRequest(error.config);
+            } catch (_error) {
+                localStorage.removeItem('tokenAccess')
+                localStorage.removeItem('tokenRefresh')
+                return Promise.reject(_error);
+            }
         }
-        return Promise.reject(error)
     }
-)
-export default axiosInstance
+
+    return Promise.reject(error);
+}
+
+export const setupInterceptorsTo = (axiosInstance:AxiosInstance) =>{
+    axiosInstance.interceptors.request.use(onRequest,onRequestError);
+    axiosInstance.interceptors.response.use(onResponse,onResponseError);
+    return axiosInstance;
+}
+export default setupInterceptorsTo(authRequest)

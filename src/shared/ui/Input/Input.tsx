@@ -10,7 +10,7 @@ const Input: React.FC<InputProps> = ({ className, ...rest }) => {
     <input
       className={cn(
         className,
-        "outline-none border-none bg-transparent"
+        "outline-none border-none bg-transparent w-full"
         )
       }
       {...rest}

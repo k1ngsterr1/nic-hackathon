@@ -1,7 +1,9 @@
+import { SingupForm } from "@/features/auth/signup";
+
 const MainPage = () => {
   return (
     <section className="container">
-      Main Page
+    
     </section>
   )
 }

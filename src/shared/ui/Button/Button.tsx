@@ -20,7 +20,9 @@ const Button = forwardRef((props: IButton, ref: Ref<HTMLButtonElement>) => {
       }
       {...rest}
     >
-      {label}
+      <span>
+        {label}
+      </span>
     </button>
   );
 });
