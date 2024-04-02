@@ -1,0 +1,9 @@
+.profile__tr {
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    path {
+      fill: #de9406;
+    }
+  }
+}
