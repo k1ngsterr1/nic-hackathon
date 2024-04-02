@@ -35,12 +35,13 @@ const FeaturedFruits = () => {
           View All <Arrow />
         </Button>
       </div>
-      <div className="">
-        {data.map(({ id, description }) => (
+      <div className="grid grid-cols-4">
+        {data.map(({ id, description, type, name, price }) => (
           <div key={id} className="flex flex-col">
-            <div>
-              {description}
-            </div>
+            <div></div>
+            <span className="text-sm text-green mb-[6px]">{type}</span>
+            <h2 className="text-lg font-medium mb-4">{name}</h2>
+            <span className="text-green text-[20px] capitalize">฿ {price}</span>
           </div>
         ))}
       </div>
