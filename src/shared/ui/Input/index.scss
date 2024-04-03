@@ -4,17 +4,21 @@
   &__input {
     width: 100%;
     border-radius: 5px;
-    border: 1px solid rgb(55 65 81);
-    background: rgb(55 65 81);
+    //border: 1px solid rgb(55 65 81);
+    //background: rgb(55 65 81);
     font-size: 14px;
     font-weight: 600;
+    padding: 10px 15px;
 
     &::placeholder {
       font-size: 16px;
       font-weight: 600;
     }
     &--black {
-      color: #ffffff;
+      //border-radius: 15px;
+      //border: 1px solid #FFF;
+      padding: 20px;
+      letter-spacing: 0.09rem;
     }
   }
 }
