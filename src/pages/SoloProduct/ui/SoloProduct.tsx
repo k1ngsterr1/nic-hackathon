@@ -2,21 +2,24 @@
 import { useGetProductQuery } from "@/shared/api/apiSlice";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/reduxHooks";
 import { getRelatedProducts } from "@/shared/model/products/productSlice";
+import { Button } from "@/shared/ui";
 import Arrow from "@/shared/ui/icons/main/arrow";
 import { DescComponent } from "@/widgets/Desc";
 import { Product } from "@/widgets/Product";
+import { SimilarProducts } from "@/widgets/similarProducts";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
 const SoloProdPage = () => {
   const dispatch = useAppDispatch();
-  const params = useParams<{ id: any }>();
+  const params = useParams() as { id: string | number };
   const {
-    products: { products, related },
+    products: { products },
   } = useAppSelector((state) => state);
 
   const { data, isLoading, isFetching, isSuccess } = useGetProductQuery({
-    params,
+    id: params.id,
   });
 
   useEffect(() => {
@@ -26,7 +29,7 @@ const SoloProdPage = () => {
   useEffect(() => {
     if (!data || !products.length) return;
 
-    dispatch(getRelatedProducts(data.category.id));
+    dispatch(getRelatedProducts(data.id));
   }, [data, dispatch, products.length]);
 
   return (
@@ -42,6 +45,22 @@ const SoloProdPage = () => {
       </div>
       <Product {...data} />
       <DescComponent description={data?.description} />
+      <div className="mt-[200px]">
+        <div className="flex justify-between items-center mb-[56px]">
+          <h1 className="text-orange text-2xl font-semibold">
+            Similar products
+          </h1>
+          <Button
+            className="flex gap-2.5 hover:text-orange hover:bg-white transition-transform"
+            size="lg"
+            variant="primary"
+          >
+            <Link href={"/products"}>View all</Link>
+            <Arrow className="" />
+          </Button>
+        </div>
+        <SimilarProducts amount={8} />
+      </div>
     </section>
   );
 };

@@ -15,6 +15,8 @@ const ProductsList = ({ amount }: ProductProps) => {
 
   const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
 
+  const list = products.filter((_, i) => i < amount) ;
+
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getProducts());
@@ -34,7 +36,7 @@ const ProductsList = ({ amount }: ProductProps) => {
         <Loading />
       ) : (
         <>
-          {products.map(({ id, name, price, type, photo }) => (
+          {list.map(({ id, name, price, type, photo }) => (
             <div key={id}>
               <Link href={`/products/${id}`}>
                 <ProductCard

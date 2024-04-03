@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/reduxHooks";
+import { useAppDispatch } from "@/shared/lib/reduxHooks";
 import { PhotosType, ProductProps } from "./props";
 import { PhotoDetails } from "@/entities/PhotoDetails";
 import { RatingStar } from "@/features/Rating";
@@ -15,31 +15,34 @@ const listData = [
 ];
 
 const Product = (item: ProductProps) => {
-  const { photo, name, price, description } = item;
-  const [mainPhotoIndex, setMainPhotoIndex] = useState(0);
-  const products = useAppSelector((state) => state.products.products); // Получаем список продуктов из Redux store
+  const { photo, name, price } = item;
+  const dispatch = useAppDispatch();
+  const [currentImage, setCurrentImage] = useState<PhotosType | undefined>();
 
-  if (!photo || !Array.isArray(photo)) {
-    return <div>No photos available</div>;
-  }
-
-  const mainPhoto = products[mainPhotoIndex].photo;
+  useEffect(() => {
+    if (photo && photo.length > 0) {
+      setCurrentImage(photo[0]);
+    }
+  }, [photo]);
 
   return (
-    <div className="flex justify-between mb-20 mt-10">
+    <div className="flex gap-[96px] mb-20 mt-10">
       <div className="left__solo flex gap-7">
-        {photo &&
-          products[mainPhotoIndex].photo.map((image, index) => (
-            <PhotoDetails
-              key={index}
-              selectPhoto={() => setMainPhotoIndex(index)}
-              image={image}
-            />
-          ))}
-        <div className=" p-20 rounded-[8px] border-[3px] border-solid border-purple">
+        <div className="flex flex-col">
+          {photo &&
+            photo.map(({ image, i }) => (
+              <PhotoDetails
+                key={i}
+                i={i}
+                selectPhoto={() => setCurrentImage(image)}
+                image={image}
+              />
+            ))}
+        </div>
+        <div className="h-[686px] p-20 rounded-[8px] border-[3px] border-solid border-purple">
           <div
             className="current"
-            style={{ backgroundImage: `url(${photo[mainPhotoIndex]})` }}
+            style={{ backgroundImage: `url(${currentImage})` }}
           />
         </div>
       </div>
@@ -52,7 +55,12 @@ const Product = (item: ProductProps) => {
           <RatingStar />
         </div>
         <div className=" mt-8 mb-8 border-[1px] border-solid w-full border-white leading-[2px]"></div>
-        <p className="w-[80%] mb-6">{description}</p>
+        <p className="w-full mb-6">
+          Lorem ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
+          nonummy nibh euismod tincidunt ut laoreet dolore magn. Lorem ipsum
+          dolor sit amet, consectetuer adipi scing elit, sed diam nonummy nibh
+          euismod tincidunt ut laoreet dolore magn.{" "}
+        </p>
         <ul className="pl-5 mb-[49px]">
           {listData.map(({ text }, index) => (
             <li key={index} className="list-disc">
@@ -60,7 +68,13 @@ const Product = (item: ProductProps) => {
             </li>
           ))}
         </ul>
-        <Button className="mb-[18px]" size="xl" variant="primary" fullwidth>
+        <Button
+          onClick={() => {}}
+          className="mb-[18px]"
+          size="xl"
+          variant="primary"
+          fullwidth
+        >
           Add to Cart
         </Button>
         <Button className="mb-9" size="xl" variant="secondary" fullwidth>

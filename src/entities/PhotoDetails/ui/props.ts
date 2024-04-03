@@ -1,4 +1,5 @@
 export interface PhotoDetailsProps {
-  image: string;
-  selectPhoto: () => void;
+  image: any;
+  i: string;
+  selectPhoto: any;
 }

@@ -1,5 +1,6 @@
 export type PhotosType = {
-  image: string ;
+  image: any;
+  i: string;
 };
 
 export interface ProductProps {

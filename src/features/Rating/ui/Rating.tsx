@@ -10,7 +10,7 @@ const RatingStar = () => {
       <Rating.Star />
       <Rating.Star />
       <Rating.Star filled={false} className="mr-2" />
-      <p className="text-[16px]">( 32 review )</p>
+      <p className="text-[14px]">( 32 review )</p>
     </Rating>
   );
 };
