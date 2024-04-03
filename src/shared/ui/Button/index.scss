@@ -1,4 +1,10 @@
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $border-radius
+) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
@@ -16,7 +22,7 @@
   border-radius: 10px;
   cursor: pointer;
   outline: none;
-  transition: all .25s ease;
+  transition: all 0.25s ease;
   color: var(--first);
 
   &--md {
@@ -31,35 +37,40 @@
     @include button-size(0.75rem, 1.25rem, 1rem, 1rem, 0.75rem);
   }
 
+  &--xl {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+  }
+
   &--fullwidth {
     width: 100%;
   }
 
   &--primary {
-    background: #DE9406;
-    border: 1px solid #DE9406;
-    color: #FFFFFF;
+    background: #de9406;
+    border: 1px solid #de9406;
+    color: #ffffff;
 
     &:hover {
-
       svg {
         path {
-          fill:#DE9406;
+          fill: #de9406;
         }
       }
     }
   }
 
   &--secondary {
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    color: #DE9406;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #de9406;
   }
 
   &--third {
     background: #282828;
     border: 1px solid #282828;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   &--fourth {

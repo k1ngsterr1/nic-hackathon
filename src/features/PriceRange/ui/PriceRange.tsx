@@ -1,7 +1,7 @@
+import { PriceFilter } from "@/widgets/PriceFilter";
+
 const PriceRange = () => {
-  return (
-    <div></div>
-  )
-}
+  return <PriceFilter />;
+};
 
 export default PriceRange;

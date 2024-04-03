@@ -1,5 +1,6 @@
 import { Input } from "@/shared/ui";
 import SearchProd from "@/shared/ui/icons/products/search";
+import { ProductsList } from "@/widgets/ProductsList";
 import { AsideComponent } from "@/widgets/aside";
 
 const ProductsPage = () => {
@@ -24,7 +25,7 @@ const ProductsPage = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore.
         </p>
-        <div className="grid grid-cols-3 gap-[30px]"></div>
+        <ProductsList />
       </div>
     </section>
   );

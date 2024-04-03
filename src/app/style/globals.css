@@ -26,3 +26,12 @@ body {
 h1,h2,h3,h4,h5,h6 {
   line-height: normal;
 }
+
+.current {
+  width: 375px;
+  height: 375px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 6px;
+}
