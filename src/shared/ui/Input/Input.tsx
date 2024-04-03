@@ -21,6 +21,7 @@ const Input: React.FC<IInputProps> = ({
           `field__input--${bgColor} w-full outline-0 border-0 bg-transparent`
         )}
         {...rest}
+        // fdfdfd
       />
     </div>
   );

@@ -7,16 +7,16 @@ interface LoginCredentials {
 }
 
 export const login = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async (credentials: LoginCredentials, { rejectWithValue }) => {
     try {
-      const res = await axiosInstance.post('/login', credentials);
+      const res = await axiosInstance.post("api/v1/singin/token-email", credentials);
       console.log(res.data.accessToken);
-      localStorage.setItem('@access-token', res.data.accessToken);
-      localStorage.setItem('@refresh-token', res.data.refreshToken)
+      localStorage.setItem("@access-token", res.data.accessToken);
+      localStorage.setItem("@refresh-token", res.data.refreshToken);
       return res.data.accessToken;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
-)
+);

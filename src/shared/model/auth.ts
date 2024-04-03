@@ -1,3 +1,4 @@
+import { login } from "@/features/auth/login/model/login";
 import { createUser } from "@/features/auth/signup/model/singup";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -20,11 +21,11 @@ export interface UserState {
 const initialState: UserState = {
   user: null,
   loading: false,
-  error: null
-}
+  error: null,
+};
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -33,11 +34,17 @@ const userSlice = createSlice({
       state.user = action.payload;
       state.error = null;
     });
-    builder.addCase(createUser.rejected, (state, action: PayloadAction<any>) => {
-      state.loading = false;
-      state.error = action.payload.message;
+    builder.addCase(
+      createUser.rejected,
+      (state, action: PayloadAction<any>) => {
+        state.loading = false;
+        state.error = action.payload.message;
+      }
+    );
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
     });
-  }
+  },
 });
 
 export default userSlice.reducer;

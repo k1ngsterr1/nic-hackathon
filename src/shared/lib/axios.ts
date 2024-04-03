@@ -1,6 +1,6 @@
 import axios, { Axios, AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-const url = 'https://onepieceshop-production-f646.up.railway.app'
+const url = 'https://onepieceshop-production-f646.up.railway.app/'
 
 const authRequest = axios.create({
     baseURL: url,
