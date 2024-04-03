@@ -1,14 +1,34 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <nav className="flex gap-20 justify-center items-center">
-      <Link href={''} className="text-base font-medium" >Home</Link>
-      <Link href={''} className="text-base font-medium" >Category</Link>
-      <Link href={''} className="text-base font-medium" >Contact Us</Link>
-      <Link href={''} className="text-base font-medium" >Blog</Link>
+      <Link
+        href={"/"}
+        className="text-base font-medium transition-all hover:text-orange"
+      >
+        Home
+      </Link>
+      <Link
+        href={"/products"}
+        className="text-base font-medium transition-all hover:text-orange"
+      >
+        Category
+      </Link>
+      <Link
+        href={""}
+        className="text-base font-medium transition-all hover:text-orange"
+      >
+        Contact Us
+      </Link>
+      <Link
+        href={""}
+        className="text-base font-medium transition-all hover:text-orange"
+      >
+        Blog
+      </Link>
     </nav>
-  )
-}
+  );
+};
 
 export default Navbar;

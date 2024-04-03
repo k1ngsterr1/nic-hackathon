@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Pacifico, Fredoka } from "next/font/google";
-import cn from 'classnames';
+import cn from "classnames";
 import Providers from "./provider/provider";
 import "./style/globals.css";
 
@@ -8,13 +8,13 @@ const pacifico = Pacifico({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
-  variable: "--font-pacifico"
+  variable: "--font-pacifico",
 });
 
 const fredoka = Fredoka({
   subsets: ["latin"],
-  display: "swap"
-})
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "hackathon-nic",
@@ -28,13 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(
-        fredoka.className,
-        pacifico.variable
-      )}>
-        <Providers>
-          {children}
-        </Providers>
+      <body className={cn(fredoka.className, pacifico.variable)}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
