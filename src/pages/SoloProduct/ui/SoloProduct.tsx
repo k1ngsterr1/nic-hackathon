@@ -16,7 +16,7 @@ const SoloProdPage = () => {
   } = useAppSelector((state) => state);
 
   const { data, isLoading, isFetching, isSuccess } = useGetProductQuery({
-    id: 1,
+    params,
   });
 
   useEffect(() => {
