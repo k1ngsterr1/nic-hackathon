@@ -2,6 +2,8 @@ interface ArrowProps {
   className: string;
 }
 
+// Гайдар одобряет, но сложно в адаптации
+
 export default function Arrow({ className }: ArrowProps) {
   return (
     <svg

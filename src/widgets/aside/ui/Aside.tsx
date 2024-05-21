@@ -1,6 +1,8 @@
 import { PriceFilter } from "@/widgets/PriceFilter";
 import { Categories } from "@/widgets/categories";
 
+// Респект за семантические теги
+
 const AsideComponent = () => {
   return (
     <aside className="flex flex-col gap-9">

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
+    // Линки можно сделать массивом
     <nav className="flex gap-20 justify-center items-center">
       <Link
         href={"/"}
